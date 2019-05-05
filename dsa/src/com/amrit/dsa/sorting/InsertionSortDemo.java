@@ -8,7 +8,7 @@ import java.util.Arrays;
  * ============
  * 1. This is an "in-place" comparison-based sorting algorithm.
  * 2. A sub-list is maintained which is always sorted. For example, the lower part of an array is maintained
- * to be sorted. An element which is to be 'insert'ed in this sorted sub-list, has to find its appropriate
+ * to be sorted. An element which is to be 'inserted' in this sorted sub-list, has to find its appropriate
  * place and then it has to be inserted there. Hence the name, insertion sort.
  * 3. It starts with the assumption that element in sorted partition are sorted , the first element is used to be
  * in sorted partition in the beginning i.e. in the beginning the first sorted partion is at the extreme left of the

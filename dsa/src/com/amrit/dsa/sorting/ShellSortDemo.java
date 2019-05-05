@@ -1,4 +1,7 @@
 package com.amrit.dsa.sorting;
+
+import java.util.Arrays;
+
 /**
  * @author amrit
  * Description:
@@ -35,4 +38,66 @@ package com.amrit.dsa.sorting;
  *
  **/
 public class ShellSortDemo {
+    public static void main(String[] args){
+
+        int[] unsortedArray = {20, 35, -15, 7, 55 ,1, -22};
+        // print the array after sorting
+        System.out.println("====================================");
+        System.out.println("Sorted Array using Shell Sort");
+        System.out.println("====================================");
+        System.out.println("Array Before Sorting: " + Arrays.toString(unsortedArray));
+
+        /*
+        * Loop 1:
+        * ========
+        * 1. Maintains the gap
+        * 2. Starts from gap = arr.length/2 and gap decreases to half in every subsequent pass
+        **/
+        for( int gap = unsortedArray.length / 2; gap > 0 ; gap /=2) {
+
+            /*
+             * Loop 2:
+             * ========
+             * 1. Picks elements right side of the gap one by one in every pass , till the end of the array
+             * 2. Keeps the hold of the current element at the gap position
+             * 3. keeps the track of the index from where current pass has started
+             **/
+
+            for(int rightEnd  = gap ; rightEnd < unsortedArray.length ; rightEnd++){
+                // current value at the gap position
+                int valueAtCurrentGapPosition = unsortedArray[rightEnd];
+                // position where the current pass started at
+                int leftEnd = rightEnd;
+
+                /*
+                 * Loop 3:
+                 * ========
+                 * 1. WHILE
+                 *      (i) Till the leftEnd >= gap &&
+                 *      (ii) Element at the left end of the gap is GREATER than the element at the right end of
+                 *           the gap
+                 *    Keep Doing the following
+                 *       (i) Update Position at right end of the gap with the element at left end of the gap
+                 *       (ii) jump left with another gap i,e, [leftEnd = leftEnd - gap]
+                 *
+                 **/
+
+                 while(leftEnd >= gap && unsortedArray[leftEnd- gap] > valueAtCurrentGapPosition){
+                     unsortedArray[leftEnd] = unsortedArray[leftEnd- gap] ;
+                     leftEnd -= gap;
+                 }
+
+                 // update the left most end of the array position with the value at current gap
+                 unsortedArray[leftEnd] = valueAtCurrentGapPosition;
+            }
+
+
+
+        }
+
+        System.out.println("Array After Sorting: " + Arrays.toString(unsortedArray));
+        System.out.println("====================================");
+
+    }
+
 }
